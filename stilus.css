@@ -1,0 +1,191 @@
+/* ===== Alapok ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+
+  /* az oldal tartalma a képernyő ~90%-a, középre igazítva */
+  width: 90%;
+  margin: 20px auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1, h2, h3, p {
+  margin: 0 0 10px;
+}
+
+/* ===== Fejléc (logó + menü) – csak alsó szegély ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between; /* logó balra, menü jobbra */
+  align-items: center;            /* függőleges középre igazítás */
+  height: 70px;                   /* vékony sáv: kb. fele a későbbi hero-nak */
+  padding: 0 10px;
+  border-bottom: 1px solid #ccc;  /* csak az alsó szegély */
+  margin-bottom: 15px;            /* hely a hero szegélyétől, hogy külön vonal maradjon */
+}
+
+.logo-placeholder {
+  width: 120px;
+  height: 44px;
+  border: 1px solid #ccc;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;                      /* kis távolság a menüpontok között */
+  margin: 0;
+  padding: 0;
+  list-style: none;               /* pontok nélkül */
+}
+
+.menu a {
+  color: inherit;
+  text-decoration: none;          /* nincs aláhúzás */
+}
+
+/* ===== Főrész ===== */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;         /* cím és szöveg egymás alatt */
+  justify-content: center;        /* függőleges középre igazítás */
+  align-items: flex-start;        /* bal oldalra */
+  min-height: 140px;              /* az első header (70 px) kétszerese */
+  padding: 20px;
+  border: 1px solid #ccc;         /* vékony szegély az egész header körül */
+  text-align: left;
+}
+
+.hero h1,
+.hero p {
+  max-width: 600px;               /* a szöveg ne nyúljon végig a teljes szélességen */
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero p {
+  margin-bottom: 0;
+}
+
+.content-layout {
+  display: flex;
+  align-items: stretch;           /* article és aside egyforma magas */
+  gap: 20px;                      /* rés a kettő között */
+}
+
+.main-content {
+  flex: 3 1 0;                    /* 3 : 1 arány = kb. 75% - 25% (a réson felül) */
+  min-width: 0;
+  padding: 20px;                  /* kis belső tér */
+  border: 1px solid #ccc;
+}
+
+.main-content h2 {
+  text-align: left;
+}
+
+/* ===== Kártyák ===== */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  /* 2 kártya egy sorban: a teljes szélesség fele, mínusz a rés fele */
+  flex: 0 0 calc(50% - 10px);
+  display: flex;
+  flex-direction: row;            /* kép balra, tartalom jobbra */
+  border: 1px solid #ccc;
+}
+
+.image-placeholder {
+  flex: 0 0 40%;
+  padding: 10px;                  /* vékony térköz a kép körül */
+}
+
+.image-placeholder img {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  background: #f2f2f2;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 10px 10px 0;
+  text-align: left;
+}
+
+/* ===== Oldalsáv ===== */
+aside {
+  flex: 1 1 0;                    /* kitölti a maradék helyet az article mellett */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;         /* dobozok egymás alatt */
+  gap: 15px;                      /* kis távolság a dobozok között */
+  padding: 20px;                  /* kis belső tér */
+  border: 1px solid #ccc;
+  text-align: left;
+  /* az aljáig érés: a .content-layout align-items: stretch értéke
+     miatt az aside mindig olyan magas, mint az article */
+}
+
+aside h2 {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.aside-box {
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.aside-box h3 {
+  text-align: left;
+}
+
+.aside-box p {
+  margin-bottom: 0;
+}
+
+/* ===== Lábléc ===== */
+footer {
+  display: flex;
+  align-items: center;            /* függőleges középre igazítás */
+  justify-content: flex-start;    /* balra igazítás */
+  height: 70px;                   /* a hero (140 px) fele */
+  padding: 0 20px;
+  border: 1px solid #ccc;
+}
+
+/* az eredeti két szöveg elrejtése */
+footer p {
+  display: none;
+}
+
+/* a kért szöveg megjelenítése CSS-ből */
+footer::before {
+  content: "Albert Simon weboldala";
+}
